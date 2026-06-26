@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Jost } from "next/font/google";
+import { Cormorant_Garamond, Jost, Vazirmatn } from "next/font/google";
 import "./globals.css";
+import { LanguageProvider } from "./i18n";
 
 const cormorant = Cormorant_Garamond({
   variable: "--font-cormorant",
@@ -13,6 +14,12 @@ const jost = Jost({
   variable: "--font-jost",
   subsets: ["latin"],
   weight: ["300", "400", "500"],
+});
+
+const vazirmatn = Vazirmatn({
+  variable: "--font-vazir",
+  subsets: ["arabic", "latin"],
+  weight: ["300", "400", "500", "600"],
 });
 
 export const metadata: Metadata = {
@@ -42,10 +49,11 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${cormorant.variable} ${jost.variable} h-full antialiased`}
+      dir="ltr"
+      className={`${cormorant.variable} ${jost.variable} ${vazirmatn.variable} h-full antialiased`}
     >
       <body className="grain min-h-full flex flex-col bg-background text-foreground">
-        {children}
+        <LanguageProvider>{children}</LanguageProvider>
       </body>
     </html>
   );

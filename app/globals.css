@@ -70,6 +70,33 @@ body {
   }
 }
 
+/* ------- Persian (Farsi) language mode ------- */
+/* Use Vazirmatn for both sans and serif so headings render correctly in Persian. */
+.lang-fa body,
+.lang-fa {
+  font-family: var(--font-vazir), system-ui, sans-serif;
+}
+.lang-fa .font-serif {
+  font-family: var(--font-vazir), Georgia, serif;
+}
+/* Letter-spacing breaks Persian's connected script — neutralise tracking utilities.
+   Brand wordmarks use arbitrary tracking values (e.g. tracking-[0.28em]) and stay Latin,
+   so they are intentionally not affected here. */
+.lang-fa .tracking-luxe,
+.lang-fa .tracking-wide-sm,
+.lang-fa .tracking-wide,
+.lang-fa .tracking-tight {
+  letter-spacing: 0 !important;
+}
+/* Persian has no uppercase; avoid faux-uppercasing Farsi labels. */
+.lang-fa .uppercase {
+  text-transform: none;
+}
+/* Keep the Latin brand wordmark styled even in Persian mode. */
+.lang-fa .latin-mark {
+  font-family: var(--font-serif), Georgia, serif !important;
+}
+
 /* Scroll reveal */
 .reveal {
   opacity: 0;

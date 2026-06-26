@@ -1,69 +1,25 @@
+"use client";
+
 import Image from "next/image";
 import SiteHeader from "./components/SiteHeader";
 import Reveal from "./components/Reveal";
 import Faq from "./components/Faq";
 import NewsletterForm from "./components/NewsletterForm";
+import { useI18n } from "./i18n";
 
-const collection = [
-  {
-    name: "The Triangle",
-    tagline: "Vegetable-tanned calf",
-    color: "Caramel",
-    img: "/images/bag-tan-triangle.png",
-  },
-  {
-    name: "Le Petit Cherry",
-    tagline: "Mini top-handle",
-    color: "Onyx",
-    img: "/images/bag-black-cherry.png",
-  },
-  {
-    name: "The Mini Tote",
-    tagline: "Structured micro tote",
-    color: "Onyx",
-    img: "/images/bag-black-tote.png",
-  },
-  {
-    name: "The Pocket",
-    tagline: "Micro crossbody",
-    color: "Cerise",
-    img: "/images/look-red-mini.png",
-  },
+const collectionImages = [
+  "/images/bag-tan-triangle.png",
+  "/images/bag-black-cherry.png",
+  "/images/bag-black-tote.png",
+  "/images/look-red-mini.png",
 ];
 
-const lookbook = [
-  { img: "/images/look-yellow-crossbody.png", label: "Amber on Noir" },
-  { img: "/images/look-black-crossbody.png", label: "Shadow Play" },
+const lookbookImages = [
+  "/images/look-yellow-crossbody.png",
+  "/images/look-black-crossbody.png",
 ];
 
-const palette = [
-  { name: "Caramel", hex: "#c08a5e" },
-  { name: "Cognac", hex: "#8a5a36" },
-  { name: "Amber", hex: "#d9a441" },
-  { name: "Cerise", hex: "#9d2b2b" },
-  { name: "Onyx", hex: "#1a1614" },
-];
-
-const testimonials = [
-  {
-    quote:
-      "It is the only bag I reach for now. Quiet, but everyone notices it.",
-    name: "Maryam",
-    place: "Tehran",
-  },
-  {
-    quote:
-      "The leather has aged beautifully. It feels more mine with every month.",
-    name: "Sara",
-    place: "Isfahan",
-  },
-  {
-    quote:
-      "Understated luxury, done properly. The little cherry makes me smile daily.",
-    name: "Leila",
-    place: "Mashhad",
-  },
-];
+const paletteHex = ["#c08a5e", "#8a5a36", "#d9a441", "#9d2b2b", "#1a1614"];
 
 const journey = [
   "/images/hero-tan.png",
@@ -74,7 +30,17 @@ const journey = [
   "/images/look-red-mini.png",
 ];
 
+function Wordmark({ className = "" }: { className?: string }) {
+  return (
+    <span className={`latin-mark ${className}`}>
+      N<span className="text-copper">Ō</span>R
+    </span>
+  );
+}
+
 export default function Home() {
+  const { t, lang } = useI18n();
+
   return (
     <>
       <SiteHeader />
@@ -103,20 +69,20 @@ export default function Home() {
               بسم الله النور
             </p>
             <h1 className="font-serif text-[22vw] leading-[0.85] tracking-[0.05em] text-foreground sm:text-[16vw] md:text-[12rem]">
-              N<span className="text-copper">Ō</span>R
+              <Wordmark />
             </h1>
             <p className="mt-2 font-serif text-2xl italic text-copper-soft md:text-3xl">
               نور
             </p>
             <p className="mt-8 max-w-md text-balance text-sm font-light leading-relaxed tracking-wide-sm text-muted md:text-base">
-              Handcrafted leather, distilled to its essence.
+              {t.hero.tagline}
             </p>
             <a
               href="#collection"
               className="group mt-12 inline-flex items-center gap-3 text-[0.72rem] uppercase tracking-wide-sm text-foreground"
             >
               <span className="transition-colors group-hover:text-copper-soft">
-                Discover the collection
+                {t.cta.discover}
               </span>
               <span className="block h-px w-10 bg-copper transition-all duration-500 group-hover:w-16" />
             </a>
@@ -133,17 +99,10 @@ export default function Home() {
             <div className="animate-marquee flex shrink-0 items-center whitespace-nowrap">
               {Array.from({ length: 2 }).map((_, i) => (
                 <span key={i} className="flex items-center">
-                  {[
-                    "Made to order",
-                    "Handcrafted leather",
-                    "Limited editions",
-                    "less > more",
-                    "The cherry, always",
-                    "Quiet luxury",
-                  ].map((t) => (
-                    <span key={t} className="flex items-center">
+                  {t.marquee.map((phrase, j) => (
+                    <span key={`${i}-${j}`} className="flex items-center">
                       <span className="px-8 font-serif text-lg italic tracking-wide text-copper-soft md:text-xl">
-                        {t}
+                        {phrase}
                       </span>
                       <span className="text-copper">✦</span>
                     </span>
@@ -161,40 +120,31 @@ export default function Home() {
         >
           <Reveal className="lg:col-span-5">
             <p className="mb-6 text-[0.7rem] uppercase tracking-luxe text-copper">
-              The House
+              {t.house.eyebrow}
             </p>
             <h2 className="font-serif text-5xl font-light leading-[1.05] tracking-tight md:text-7xl">
-              House of
+              {t.house.titleTop}
               <br />
-              N<span className="text-copper">Ō</span>R
+              {lang === "en" ? (
+                <Wordmark />
+              ) : (
+                <span className="text-copper-soft">نور</span>
+              )}
             </h2>
-            <p
-              className="mt-6 font-serif text-xl italic text-copper-soft"
-              dir="rtl"
-              lang="ar"
-            >
-              نور — light
+            <p className="mt-6 font-serif text-xl italic text-copper-soft">
+              {t.house.light}
             </p>
           </Reveal>
 
           <Reveal delay={120} className="lg:col-span-7">
             <p className="text-balance font-serif text-2xl font-light leading-snug md:text-3xl">
-              NŌR means light. We named the house for the way good leather
-              catches it — and for the clarity of a wardrobe pared back to what
-              you truly love.
+              {t.house.lead}
             </p>
             <p className="mt-8 max-w-xl text-sm font-light leading-loose tracking-wide-sm text-muted md:text-base">
-              House of NŌR began as a small atelier with an obsession for
-              proportion and patina. We make few things, slowly, for people who
-              would rather own one considered piece than many forgettable ones.
-              Every bag carries our signature cherry — a small joy, tied by hand.
+              {t.house.body}
             </p>
             <div className="mt-12 grid grid-cols-3 gap-6 border-t border-line pt-8">
-              {[
-                { n: "100%", l: "Handcrafted" },
-                { n: "Made", l: "To order" },
-                { n: "1", l: "Cherry, always" },
-              ].map((s) => (
+              {t.house.stats.map((s) => (
                 <div key={s.l}>
                   <p className="font-serif text-3xl text-copper-soft md:text-4xl">
                     {s.n}
@@ -215,26 +165,28 @@ export default function Home() {
         >
           <Reveal>
             <p className="mb-10 text-[0.7rem] uppercase tracking-luxe text-copper">
-              The Philosophy
+              {t.philosophy.eyebrow}
             </p>
           </Reveal>
           <Reveal delay={120}>
             <p className="font-serif text-4xl font-light leading-[1.25] tracking-tight text-balance md:text-6xl">
-              We believe that what you leave out
-              <br className="hidden md:block" /> matters as much as what remains.
+              {t.philosophy.statement}
             </p>
           </Reveal>
           <Reveal delay={240}>
             <p className="mx-auto mt-12 max-w-xl text-sm font-light leading-loose tracking-wide-sm text-muted md:text-base">
-              Every NŌR piece begins with subtraction — paring away the
-              superfluous until only the necessary, and the beautiful, is left.
-              Honest leather. Quiet hardware. Forms that age into something more
-              personal with every wear.
+              {t.philosophy.body}
             </p>
           </Reveal>
           <Reveal delay={360}>
             <p className="mt-16 font-serif text-3xl italic text-copper-soft md:text-4xl">
-              less <span className="not-italic text-copper">&gt;</span> more
+              {lang === "en" ? (
+                <>
+                  less <span className="not-italic text-copper">&gt;</span> more
+                </>
+              ) : (
+                t.motto
+              )}
             </p>
           </Reveal>
         </section>
@@ -242,35 +194,35 @@ export default function Home() {
         {/* ===================== COLLECTION ===================== */}
         <section id="collection" className="px-6 pb-28 lg:px-10">
           <div className="mx-auto max-w-7xl">
-            <Reveal className="mb-16 flex flex-col items-end justify-between gap-6 border-b border-line pb-8 md:flex-row md:items-end">
+            <Reveal className="mb-16 flex flex-col items-start justify-between gap-6 border-b border-line pb-8 md:flex-row md:items-end">
               <div>
                 <p className="mb-4 text-[0.7rem] uppercase tracking-luxe text-copper">
-                  The Collection
+                  {t.collection.eyebrow}
                 </p>
                 <h2 className="font-serif text-5xl font-light tracking-tight md:text-7xl">
-                  Objects of restraint
+                  {t.collection.title}
                 </h2>
               </div>
               <p className="max-w-xs text-sm font-light leading-relaxed text-muted">
-                A small, considered edit. Made in limited numbers, by hand.
+                {t.collection.note}
               </p>
             </Reveal>
 
             <div className="grid grid-cols-1 gap-x-8 gap-y-16 sm:grid-cols-2 lg:grid-cols-4">
-              {collection.map((item, i) => (
-                <Reveal key={item.name} delay={i * 90}>
+              {t.collection.items.map((item, i) => (
+                <Reveal key={collectionImages[i]} delay={i * 90}>
                   <article className="group cursor-pointer">
                     <div className="relative aspect-[4/5] overflow-hidden bg-[#15110e]">
                       <Image
-                        src={item.img}
+                        src={collectionImages[i]}
                         alt={`${item.name} — ${item.color}`}
                         fill
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                         className="object-cover transition-transform duration-[1.4s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-[#0a0807]/40 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-                      <span className="absolute bottom-4 left-4 translate-y-3 text-[0.65rem] uppercase tracking-wide-sm text-foreground opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
-                        View piece →
+                      <span className="absolute bottom-4 start-4 translate-y-3 text-[0.65rem] uppercase tracking-wide-sm text-foreground opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
+                        {t.collection.viewPiece}
                       </span>
                     </div>
                     <div className="mt-5 flex items-start justify-between gap-4">
@@ -303,30 +255,28 @@ export default function Home() {
               sizes="100vw"
               className="object-cover object-[center_25%]"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#0a0807] via-[#0a0807]/55 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#0a0807] via-[#0a0807]/55 to-transparent rtl:bg-gradient-to-l" />
             <div className="absolute inset-0 bg-gradient-to-t from-[#0a0807] via-transparent to-transparent" />
           </div>
           <div className="relative z-10 mx-auto w-full max-w-7xl px-6 lg:px-10">
             <Reveal className="max-w-xl">
               <p className="mb-5 text-[0.7rem] uppercase tracking-luxe text-copper">
-                Featured · 01
+                {t.featured.eyebrow}
               </p>
               <h2 className="font-serif text-5xl font-light leading-[1.05] tracking-tight md:text-7xl">
-                Amber catches
+                {t.featured.titleA}
                 <br />
-                the light.
+                {t.featured.titleB}
               </h2>
               <p className="mt-7 max-w-md text-sm font-light leading-loose tracking-wide-sm text-muted md:text-base">
-                Our caramel crossbody in vegetable-tanned calf — compact, warm,
-                and made to be lived in. The piece that taught us how little a
-                bag really needs.
+                {t.featured.body}
               </p>
               <a
                 href="#order"
                 className="group mt-10 inline-flex items-center gap-3 text-[0.72rem] uppercase tracking-wide-sm text-foreground"
               >
                 <span className="transition-colors group-hover:text-copper-soft">
-                  Enquire to acquire
+                  {t.cta.enquireToAcquire}
                 </span>
                 <span className="block h-px w-10 bg-copper transition-all duration-500 group-hover:w-16" />
               </a>
@@ -339,22 +289,22 @@ export default function Home() {
           <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-0 lg:grid-cols-2">
             <Reveal className="order-2 px-6 py-24 lg:order-1 lg:px-16 lg:py-40">
               <p className="mb-6 text-[0.7rem] uppercase tracking-luxe text-copper">
-                The Signature
+                {t.signature.eyebrow}
               </p>
               <h2 className="font-serif text-5xl font-light leading-[1.1] tracking-tight md:text-6xl">
-                A single cherry,
+                {t.signature.titleA}
                 <br />
-                <span className="italic text-copper-soft">always.</span>
+                <span className="italic text-copper-soft">
+                  {t.signature.titleB}
+                </span>
               </h2>
               <p className="mt-8 max-w-md text-sm font-light leading-loose tracking-wide-sm text-muted md:text-base">
-                Where a house signs its name, we tie a small cherry charm — a
-                quiet wink, a reminder that luxury can be playful. It is the one
-                detail we never subtract. Look for it on every piece.
+                {t.signature.body}
               </p>
               <div className="mt-10 flex items-center gap-4">
                 <span className="h-px w-12 bg-copper" />
                 <span className="font-serif text-lg italic text-copper-soft">
-                  the mark of NŌR
+                  {t.signature.mark}
                 </span>
               </div>
             </Reveal>
@@ -377,26 +327,25 @@ export default function Home() {
           <div className="mx-auto max-w-7xl">
             <Reveal className="mx-auto mb-16 max-w-2xl text-center">
               <p className="mb-5 text-[0.7rem] uppercase tracking-luxe text-copper">
-                Materials
+                {t.materials.eyebrow}
               </p>
               <h2 className="font-serif text-5xl font-light tracking-tight md:text-6xl">
-                The palette
+                {t.materials.title}
               </h2>
               <p className="mx-auto mt-6 max-w-md text-sm font-light leading-loose tracking-wide-sm text-muted">
-                A tight range of natural leather tones, each chosen to deepen and
-                soften with time. No two pieces age quite alike.
+                {t.materials.note}
               </p>
             </Reveal>
 
             <div className="flex flex-wrap items-start justify-center gap-x-10 gap-y-12 sm:gap-x-16">
-              {palette.map((c, i) => (
-                <Reveal key={c.name} delay={i * 80}>
+              {t.materials.swatches.map((name, i) => (
+                <Reveal key={paletteHex[i]} delay={i * 80}>
                   <div className="group flex flex-col items-center">
                     <span
                       className="h-24 w-24 rounded-full ring-1 ring-inset ring-white/10 transition-transform duration-500 group-hover:scale-105 md:h-28 md:w-28"
-                      style={{ backgroundColor: c.hex }}
+                      style={{ backgroundColor: paletteHex[i] }}
                     />
-                    <span className="mt-5 font-serif text-xl">{c.name}</span>
+                    <span className="mt-5 font-serif text-xl">{name}</span>
                   </div>
                 </Reveal>
               ))}
@@ -409,27 +358,27 @@ export default function Home() {
           <div className="mx-auto max-w-7xl">
             <Reveal className="mb-14 text-center">
               <p className="mb-4 text-[0.7rem] uppercase tracking-luxe text-copper">
-                Worn
+                {t.lookbook.eyebrow}
               </p>
               <h2 className="font-serif text-5xl font-light tracking-tight md:text-7xl">
-                In the everyday
+                {t.lookbook.title}
               </h2>
             </Reveal>
 
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-              {lookbook.map((look, i) => (
-                <Reveal key={look.label} delay={i * 120}>
+              {t.lookbook.labels.map((label, i) => (
+                <Reveal key={lookbookImages[i]} delay={i * 120}>
                   <figure className="group relative aspect-[3/4] overflow-hidden bg-[#15110e]">
                     <Image
-                      src={look.img}
-                      alt={look.label}
+                      src={lookbookImages[i]}
+                      alt={label}
                       fill
                       sizes="(max-width: 768px) 100vw, 50vw"
                       className="object-cover transition-transform duration-[1.6s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0a0807]/70 via-transparent to-transparent" />
-                    <figcaption className="absolute bottom-6 left-6 font-serif text-2xl text-foreground md:text-3xl">
-                      {look.label}
+                    <figcaption className="absolute bottom-6 start-6 font-serif text-2xl text-foreground md:text-3xl">
+                      {label}
                     </figcaption>
                   </figure>
                 </Reveal>
@@ -446,34 +395,19 @@ export default function Home() {
           <div className="mx-auto grid max-w-7xl grid-cols-1 gap-16 md:grid-cols-12">
             <Reveal className="md:col-span-5">
               <p className="mb-6 text-[0.7rem] uppercase tracking-luxe text-copper">
-                The Atelier
+                {t.atelier.eyebrow}
               </p>
               <h2 className="font-serif text-5xl font-light leading-[1.1] tracking-tight md:text-6xl">
-                Made slowly,
+                {t.atelier.titleA}
                 <br />
-                <span className="italic text-copper-soft">made well.</span>
+                <span className="italic text-copper-soft">
+                  {t.atelier.titleB}
+                </span>
               </h2>
             </Reveal>
 
             <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 md:col-span-7">
-              {[
-                {
-                  t: "Honest leather",
-                  d: "Full-grain and vegetable-tanned hides chosen to patina gracefully — each bag becomes singular with time.",
-                },
-                {
-                  t: "Hand-finished",
-                  d: "Edges painted and burnished by hand, stitched with waxed thread for seams that endure.",
-                },
-                {
-                  t: "Limited by intent",
-                  d: "We produce in small runs. Scarcity here is not a strategy — it is the natural result of care.",
-                },
-                {
-                  t: "Designed to last",
-                  d: "Timeless silhouettes, quiet hardware. Pieces meant to outlive trends and seasons.",
-                },
-              ].map((f, i) => (
+              {t.atelier.features.map((f, i) => (
                 <Reveal key={f.t} delay={i * 90}>
                   <div className="border-t border-line pt-6">
                     <h3 className="font-serif text-2xl font-normal">{f.t}</h3>
@@ -492,25 +426,25 @@ export default function Home() {
           <div className="mx-auto max-w-7xl">
             <Reveal className="mb-16 text-center">
               <p className="mb-5 text-[0.7rem] uppercase tracking-luxe text-copper">
-                Words
+                {t.words.eyebrow}
               </p>
               <h2 className="font-serif text-5xl font-light tracking-tight md:text-6xl">
-                From those who carry NŌR
+                {t.words.title}
               </h2>
             </Reveal>
 
             <div className="grid grid-cols-1 gap-10 md:grid-cols-3">
-              {testimonials.map((t, i) => (
-                <Reveal key={t.name} delay={i * 110}>
+              {t.words.items.map((item, i) => (
+                <Reveal key={item.name} delay={i * 110}>
                   <figure className="flex h-full flex-col border-t border-line pt-8">
                     <span className="font-serif text-5xl leading-none text-copper">
                       “
                     </span>
                     <blockquote className="mt-2 flex-1 font-serif text-xl font-light italic leading-relaxed text-foreground md:text-2xl">
-                      {t.quote}
+                      {item.quote}
                     </blockquote>
                     <figcaption className="mt-6 text-[0.7rem] uppercase tracking-wide-sm text-muted">
-                      {t.name} — {t.place}
+                      {item.name} — {item.place}
                     </figcaption>
                   </figure>
                 </Reveal>
@@ -522,13 +456,13 @@ export default function Home() {
         {/* ===================== JOURNEY (INSTAGRAM) ===================== */}
         <section id="journal" className="px-6 pb-28 lg:px-10">
           <div className="mx-auto max-w-7xl">
-            <Reveal className="mb-12 flex flex-col items-center justify-between gap-4 sm:flex-row">
+            <Reveal className="mb-12 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
               <div>
                 <p className="mb-4 text-[0.7rem] uppercase tracking-luxe text-copper">
-                  The Journal
+                  {t.journal.eyebrow}
                 </p>
                 <h2 className="font-serif text-4xl font-light tracking-tight md:text-6xl">
-                  Follow the journey
+                  {t.journal.title}
                 </h2>
               </div>
               <a
@@ -536,6 +470,7 @@ export default function Home() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group inline-flex items-center gap-3 text-[0.72rem] uppercase tracking-wide-sm text-copper-soft"
+                dir="ltr"
               >
                 <span className="transition-colors group-hover:text-foreground">
                   @houseof.nor
@@ -561,9 +496,7 @@ export default function Home() {
                       className="object-cover transition-transform duration-[1.4s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-110"
                     />
                     <div className="absolute inset-0 flex items-center justify-center bg-[#0a0807]/0 opacity-0 transition-all duration-500 group-hover:bg-[#0a0807]/45 group-hover:opacity-100">
-                      <span className="font-serif text-2xl tracking-[0.3em] text-foreground">
-                        N<span className="text-copper">Ō</span>R
-                      </span>
+                      <Wordmark className="font-serif text-2xl tracking-[0.3em] text-foreground" />
                     </div>
                   </a>
                 </Reveal>
@@ -580,15 +513,15 @@ export default function Home() {
           <div className="mx-auto grid max-w-7xl grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-20">
             <Reveal className="lg:col-span-4">
               <p className="mb-5 text-[0.7rem] uppercase tracking-luxe text-copper">
-                Enquiries
+                {t.faq.eyebrow}
               </p>
               <h2 className="font-serif text-5xl font-light leading-[1.05] tracking-tight md:text-6xl">
-                Good to
+                {t.faq.titleA}
                 <br />
-                know
+                {t.faq.titleB}
               </h2>
               <p className="mt-6 max-w-xs text-sm font-light leading-loose tracking-wide-sm text-muted">
-                Anything else? We&apos;re a message away on Instagram or Eitaa.
+                {t.faq.note}
               </p>
             </Reveal>
             <Reveal delay={120} className="lg:col-span-8">
@@ -602,20 +535,19 @@ export default function Home() {
           <div className="mx-auto max-w-3xl">
             <Reveal>
               <p className="mb-8 text-[0.7rem] uppercase tracking-luxe text-copper">
-                Acquire
+                {t.order.eyebrow}
               </p>
             </Reveal>
             <Reveal delay={100}>
               <h2 className="font-serif text-5xl font-light leading-[1.1] tracking-tight text-balance md:text-7xl">
-                Begin a quiet
+                {t.order.titleA}
                 <br />
-                conversation.
+                {t.order.titleB}
               </h2>
             </Reveal>
             <Reveal delay={200}>
               <p className="mx-auto mt-8 max-w-md text-sm font-light leading-loose tracking-wide-sm text-muted md:text-base">
-                Each NŌR piece is made to order. Reach us on Instagram or Eitaa,
-                or by phone, and we&apos;ll guide you through the collection.
+                {t.order.body}
               </p>
             </Reveal>
 
@@ -637,7 +569,7 @@ export default function Home() {
                 rel="noopener noreferrer"
                 className="w-full rounded-full border border-line px-9 py-4 text-[0.72rem] uppercase tracking-wide-sm text-copper-soft transition-all duration-500 hover:border-copper hover:text-foreground sm:w-auto"
               >
-                Order on Eitaa
+                {t.cta.orderEitaa}
               </a>
             </Reveal>
 
@@ -657,14 +589,13 @@ export default function Home() {
         <section className="border-t border-line bg-[#0c0a08] px-6 py-24 text-center lg:py-32">
           <Reveal className="mx-auto max-w-xl">
             <p className="mb-6 text-[0.7rem] uppercase tracking-luxe text-copper">
-              Stay close
+              {t.newsletter.eyebrow}
             </p>
             <h2 className="font-serif text-4xl font-light leading-tight tracking-tight text-balance md:text-5xl">
-              Join the list
+              {t.newsletter.title}
             </h2>
             <p className="mx-auto mt-5 max-w-sm text-sm font-light leading-loose tracking-wide-sm text-muted">
-              New pieces, in small numbers, told first to those on our list. No
-              noise — only NŌR.
+              {t.newsletter.body}
             </p>
             <NewsletterForm />
           </Reveal>
@@ -673,7 +604,7 @@ export default function Home() {
         {/* ===================== FOOTER ===================== */}
         <footer className="border-t border-line px-6 py-14 lg:px-10">
           <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-8 md:flex-row">
-            <div className="text-center md:text-left">
+            <div className="text-center md:text-start">
               <a
                 href="#top"
                 className="flex flex-col items-center font-serif leading-[1.02] md:items-start"
@@ -682,9 +613,7 @@ export default function Home() {
                 <span className="text-[0.72rem] font-light tracking-[0.18em] text-muted">
                   House of
                 </span>
-                <span className="text-2xl tracking-[0.28em]">
-                  N<span className="text-copper">Ō</span>R
-                </span>
+                <Wordmark className="text-2xl tracking-[0.28em]" />
               </a>
               <p
                 className="mt-3 text-xs font-light tracking-wide-sm text-copper-soft"
@@ -697,12 +626,12 @@ export default function Home() {
 
             <nav className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3">
               {[
-                { href: "#house", label: "House" },
-                { href: "#collection", label: "Collection" },
-                { href: "#atelier", label: "Atelier" },
-                { href: "#journal", label: "Journal" },
-                { href: "#faq", label: "FAQ" },
-                { href: "#order", label: "Order" },
+                { href: "#house", label: t.nav.house },
+                { href: "#collection", label: t.nav.collection },
+                { href: "#atelier", label: t.nav.atelier },
+                { href: "#journal", label: t.nav.journal },
+                { href: "#faq", label: t.nav.faq },
+                { href: "#order", label: t.nav.order },
               ].map((l) => (
                 <a
                   key={l.href}
@@ -715,7 +644,7 @@ export default function Home() {
             </nav>
 
             <p className="text-[0.65rem] uppercase tracking-wide-sm text-muted">
-              © {new Date().getFullYear()}&nbsp;NŌR — less &gt; more
+              © {new Date().getFullYear()}&nbsp;{t.brand} — {t.motto}
             </p>
           </div>
         </footer>

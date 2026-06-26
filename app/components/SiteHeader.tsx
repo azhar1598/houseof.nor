@@ -1,19 +1,21 @@
 "use client";
 
 import { useEffect, useState } from "react";
-
-const LINKS = [
-  { href: "#house", label: "House" },
-  { href: "#collection", label: "Collection" },
-  { href: "#signature", label: "The Cherry" },
-  { href: "#atelier", label: "Atelier" },
-  { href: "#journal", label: "Journal" },
-  { href: "#order", label: "Order" },
-];
+import { useI18n } from "../i18n";
 
 export default function SiteHeader() {
+  const { t, toggle, otherLang } = useI18n();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+
+  const links = [
+    { href: "#house", label: t.nav.house },
+    { href: "#collection", label: t.nav.collection },
+    { href: "#signature", label: t.nav.cherry },
+    { href: "#atelier", label: t.nav.atelier },
+    { href: "#journal", label: t.nav.journal },
+    { href: "#order", label: t.nav.order },
+  ];
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -55,13 +57,13 @@ export default function SiteHeader() {
             <span className="text-[0.72rem] font-light tracking-[0.18em] text-muted transition-colors group-hover:text-copper-soft">
               House of
             </span>
-            <span className="text-2xl tracking-[0.28em] transition-colors group-hover:text-copper-soft">
+            <span className="latin-mark text-2xl tracking-[0.28em] transition-colors group-hover:text-copper-soft">
               N<span className="text-copper">Ō</span>R
             </span>
           </a>
 
           <nav className="hidden items-center gap-10 md:flex">
-            {LINKS.map((link) => (
+            {links.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
@@ -73,24 +75,44 @@ export default function SiteHeader() {
             ))}
           </nav>
 
-          <a
-            href="#order"
-            className="hidden rounded-full border border-line px-6 py-2.5 text-[0.7rem] uppercase tracking-wide-sm text-copper-soft transition-all duration-500 hover:border-copper hover:bg-copper hover:text-[#0a0807] md:inline-block"
-          >
-            Enquire
-          </a>
+          <div className="hidden items-center gap-6 md:flex">
+            <button
+              type="button"
+              onClick={toggle}
+              aria-label={`Switch language to ${otherLang === "fa" ? "Persian" : "English"}`}
+              className="latin-mark text-[0.7rem] uppercase tracking-wide-sm text-muted transition-colors hover:text-copper-soft"
+            >
+              {t.otherLangName}
+            </button>
+            <a
+              href="#order"
+              className="rounded-full border border-line px-6 py-2.5 text-[0.7rem] uppercase tracking-wide-sm text-copper-soft transition-all duration-500 hover:border-copper hover:bg-copper hover:text-[#0a0807]"
+            >
+              {t.cta.enquire}
+            </a>
+          </div>
 
-          <button
-            type="button"
-            onClick={() => setOpen(true)}
-            aria-label="Open menu"
-            aria-expanded={open}
-            className="flex h-9 w-9 flex-col items-center justify-center gap-[5px] md:hidden"
-          >
-            <span className="h-px w-6 bg-foreground" />
-            <span className="h-px w-6 bg-foreground" />
-            <span className="h-px w-6 bg-foreground" />
-          </button>
+          <div className="flex items-center gap-5 md:hidden">
+            <button
+              type="button"
+              onClick={toggle}
+              aria-label={`Switch language to ${otherLang === "fa" ? "Persian" : "English"}`}
+              className="latin-mark text-[0.7rem] uppercase tracking-wide-sm text-muted"
+            >
+              {t.otherLangName}
+            </button>
+            <button
+              type="button"
+              onClick={() => setOpen(true)}
+              aria-label="Open menu"
+              aria-expanded={open}
+              className="flex h-9 w-9 flex-col items-center justify-center gap-[5px]"
+            >
+              <span className="h-px w-6 bg-foreground" />
+              <span className="h-px w-6 bg-foreground" />
+              <span className="h-px w-6 bg-foreground" />
+            </button>
+          </div>
         </div>
       </header>
 
@@ -112,7 +134,7 @@ export default function SiteHeader() {
             <span className="text-[0.72rem] font-light tracking-[0.18em] text-muted">
               House of
             </span>
-            <span className="text-2xl tracking-[0.28em]">
+            <span className="latin-mark text-2xl tracking-[0.28em]">
               N<span className="text-copper">Ō</span>R
             </span>
           </a>
@@ -128,7 +150,7 @@ export default function SiteHeader() {
         </div>
 
         <nav className="flex flex-1 flex-col items-center justify-center gap-7 overflow-y-auto px-6 py-10">
-          {LINKS.map((link, i) => (
+          {links.map((link, i) => (
             <a
               key={link.href}
               href={link.href}
@@ -147,16 +169,26 @@ export default function SiteHeader() {
             href="#order"
             onClick={() => setOpen(false)}
             style={{
-              transitionDelay: open ? `${120 + LINKS.length * 55}ms` : "0ms",
+              transitionDelay: open ? `${120 + links.length * 55}ms` : "0ms",
             }}
             className={`mt-4 rounded-full border border-copper px-9 py-3.5 text-xs uppercase tracking-wide-sm text-copper-soft transition-all duration-500 ${
               open ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0"
             }`}
           >
-            Enquire
+            {t.cta.enquire}
           </a>
+          <button
+            type="button"
+            onClick={() => {
+              toggle();
+              setOpen(false);
+            }}
+            className="latin-mark mt-2 text-[0.72rem] uppercase tracking-wide-sm text-muted transition-colors hover:text-copper-soft"
+          >
+            {t.otherLangName}
+          </button>
           <p
-            className="mt-6 text-[0.7rem] uppercase tracking-luxe text-copper"
+            className="mt-4 text-[0.7rem] uppercase tracking-luxe text-copper"
             dir="rtl"
             lang="ar"
           >
