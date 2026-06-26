@@ -676,10 +676,15 @@ export default function Home() {
             <div className="text-center md:text-left">
               <a
                 href="#top"
-                className="font-serif text-2xl tracking-[0.3em]"
-                aria-label="NOR home"
+                className="flex flex-col items-center font-serif leading-[1.02] md:items-start"
+                aria-label="House of NOR home"
               >
-                N<span className="text-copper">Ō</span>R
+                <span className="text-[0.72rem] font-light tracking-[0.18em] text-muted">
+                  House of
+                </span>
+                <span className="text-2xl tracking-[0.28em]">
+                  N<span className="text-copper">Ō</span>R
+                </span>
               </a>
               <p
                 className="mt-3 text-xs font-light tracking-wide-sm text-copper-soft"

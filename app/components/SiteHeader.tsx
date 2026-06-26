@@ -49,10 +49,15 @@ export default function SiteHeader() {
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 lg:px-10">
           <a
             href="#top"
-            className="font-serif text-2xl tracking-[0.3em] text-foreground transition-colors hover:text-copper-soft"
-            aria-label="NOR home"
+            className="group flex flex-col font-serif leading-[1.02] text-foreground"
+            aria-label="House of NOR home"
           >
-            N<span className="text-copper">Ō</span>R
+            <span className="text-[0.72rem] font-light tracking-[0.18em] text-muted transition-colors group-hover:text-copper-soft">
+              House of
+            </span>
+            <span className="text-2xl tracking-[0.28em] transition-colors group-hover:text-copper-soft">
+              N<span className="text-copper">Ō</span>R
+            </span>
           </a>
 
           <nav className="hidden items-center gap-10 md:flex">
@@ -101,10 +106,15 @@ export default function SiteHeader() {
           <a
             href="#top"
             onClick={() => setOpen(false)}
-            className="font-serif text-2xl tracking-[0.3em] text-foreground"
-            aria-label="NOR home"
+            className="flex flex-col font-serif leading-[1.02] text-foreground"
+            aria-label="House of NOR home"
           >
-            N<span className="text-copper">Ō</span>R
+            <span className="text-[0.72rem] font-light tracking-[0.18em] text-muted">
+              House of
+            </span>
+            <span className="text-2xl tracking-[0.28em]">
+              N<span className="text-copper">Ō</span>R
+            </span>
           </a>
           <button
             type="button"
