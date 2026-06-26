@@ -579,7 +579,7 @@ export default function Home() {
                 className="mt-10 inline-block font-serif text-2xl tracking-wide text-foreground transition-colors hover:text-copper-soft md:text-3xl"
                 dir="ltr"
               >
-                0935&nbsp;295&nbsp;4353
+                {t.order.phone}
               </a>
             </Reveal>
           </div>

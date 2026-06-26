@@ -180,6 +180,7 @@ const en = {
     titleA: "Begin a quiet",
     titleB: "conversation.",
     body: "Each NŌR piece is made to order. Reach us on Instagram or Eitaa, or by phone, and we'll guide you through the collection.",
+    phone: "0935\u00A0295\u00A04353",
   },
   newsletter: {
     eyebrow: "Stay close",
@@ -358,6 +359,7 @@ const fa: Dict = {
     titleA: "گفت‌وگویی آرام را",
     titleB: "آغاز کنید.",
     body: "هر قطعهٔ نور سفارشی ساخته می‌شود. از طریقِ اینستاگرام یا ایتا، یا تلفنی با ما در تماس باشید تا شما را در مجموعه راهنمایی کنیم.",
+    phone: "۰۹۳۵\u00A0۲۹۵\u00A0۴۳۵۳",
   },
   newsletter: {
     eyebrow: "همراه بمانید",
