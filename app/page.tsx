@@ -1,6 +1,8 @@
 import Image from "next/image";
 import SiteHeader from "./components/SiteHeader";
 import Reveal from "./components/Reveal";
+import Faq from "./components/Faq";
+import NewsletterForm from "./components/NewsletterForm";
 
 const collection = [
   {
@@ -32,6 +34,44 @@ const collection = [
 const lookbook = [
   { img: "/images/look-yellow-crossbody.png", label: "Amber on Noir" },
   { img: "/images/look-black-crossbody.png", label: "Shadow Play" },
+];
+
+const palette = [
+  { name: "Caramel", hex: "#c08a5e" },
+  { name: "Cognac", hex: "#8a5a36" },
+  { name: "Amber", hex: "#d9a441" },
+  { name: "Cerise", hex: "#9d2b2b" },
+  { name: "Onyx", hex: "#1a1614" },
+];
+
+const testimonials = [
+  {
+    quote:
+      "It is the only bag I reach for now. Quiet, but everyone notices it.",
+    name: "Maryam",
+    place: "Tehran",
+  },
+  {
+    quote:
+      "The leather has aged beautifully. It feels more mine with every month.",
+    name: "Sara",
+    place: "Isfahan",
+  },
+  {
+    quote:
+      "Understated luxury, done properly. The little cherry makes me smile daily.",
+    name: "Leila",
+    place: "Mashhad",
+  },
+];
+
+const journey = [
+  "/images/hero-tan.png",
+  "/images/bag-tan-triangle.png",
+  "/images/look-yellow-crossbody.png",
+  "/images/bag-black-cherry.png",
+  "/images/look-black-crossbody.png",
+  "/images/look-red-mini.png",
 ];
 
 export default function Home() {
@@ -85,6 +125,87 @@ export default function Home() {
           <div className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2">
             <div className="h-12 w-px animate-pulse bg-gradient-to-b from-copper to-transparent" />
           </div>
+        </section>
+
+        {/* ===================== MARQUEE ===================== */}
+        <section className="overflow-hidden border-y border-line bg-[#0c0a08] py-5">
+          <div className="marquee-mask flex">
+            <div className="animate-marquee flex shrink-0 items-center whitespace-nowrap">
+              {Array.from({ length: 2 }).map((_, i) => (
+                <span key={i} className="flex items-center">
+                  {[
+                    "Made to order",
+                    "Handcrafted leather",
+                    "Limited editions",
+                    "less > more",
+                    "The cherry, always",
+                    "Quiet luxury",
+                  ].map((t) => (
+                    <span key={t} className="flex items-center">
+                      <span className="px-8 font-serif text-lg italic tracking-wide text-copper-soft md:text-xl">
+                        {t}
+                      </span>
+                      <span className="text-copper">✦</span>
+                    </span>
+                  ))}
+                </span>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ===================== HOUSE OF NOR (STORY) ===================== */}
+        <section
+          id="house"
+          className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-6 py-28 lg:grid-cols-12 lg:gap-20 lg:px-10 lg:py-40"
+        >
+          <Reveal className="lg:col-span-5">
+            <p className="mb-6 text-[0.7rem] uppercase tracking-luxe text-copper">
+              The House
+            </p>
+            <h2 className="font-serif text-5xl font-light leading-[1.05] tracking-tight md:text-7xl">
+              House of
+              <br />
+              N<span className="text-copper">Ō</span>R
+            </h2>
+            <p
+              className="mt-6 font-serif text-xl italic text-copper-soft"
+              dir="rtl"
+              lang="ar"
+            >
+              نور — light
+            </p>
+          </Reveal>
+
+          <Reveal delay={120} className="lg:col-span-7">
+            <p className="text-balance font-serif text-2xl font-light leading-snug md:text-3xl">
+              NŌR means light. We named the house for the way good leather
+              catches it — and for the clarity of a wardrobe pared back to what
+              you truly love.
+            </p>
+            <p className="mt-8 max-w-xl text-sm font-light leading-loose tracking-wide-sm text-muted md:text-base">
+              House of NŌR began as a small atelier with an obsession for
+              proportion and patina. We make few things, slowly, for people who
+              would rather own one considered piece than many forgettable ones.
+              Every bag carries our signature cherry — a small joy, tied by hand.
+            </p>
+            <div className="mt-12 grid grid-cols-3 gap-6 border-t border-line pt-8">
+              {[
+                { n: "100%", l: "Handcrafted" },
+                { n: "Made", l: "To order" },
+                { n: "1", l: "Cherry, always" },
+              ].map((s) => (
+                <div key={s.l}>
+                  <p className="font-serif text-3xl text-copper-soft md:text-4xl">
+                    {s.n}
+                  </p>
+                  <p className="mt-2 text-[0.65rem] uppercase tracking-wide-sm text-muted">
+                    {s.l}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </Reveal>
         </section>
 
         {/* ===================== PHILOSOPHY ===================== */}
@@ -172,6 +293,47 @@ export default function Home() {
           </div>
         </section>
 
+        {/* ===================== FEATURED SPOTLIGHT ===================== */}
+        <section className="relative flex min-h-[90vh] items-center overflow-hidden">
+          <div className="absolute inset-0">
+            <Image
+              src="/images/look-yellow-crossbody.png"
+              alt="Editorial — the caramel crossbody, worn"
+              fill
+              sizes="100vw"
+              className="object-cover object-[center_25%]"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#0a0807] via-[#0a0807]/55 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0a0807] via-transparent to-transparent" />
+          </div>
+          <div className="relative z-10 mx-auto w-full max-w-7xl px-6 lg:px-10">
+            <Reveal className="max-w-xl">
+              <p className="mb-5 text-[0.7rem] uppercase tracking-luxe text-copper">
+                Featured · 01
+              </p>
+              <h2 className="font-serif text-5xl font-light leading-[1.05] tracking-tight md:text-7xl">
+                Amber catches
+                <br />
+                the light.
+              </h2>
+              <p className="mt-7 max-w-md text-sm font-light leading-loose tracking-wide-sm text-muted md:text-base">
+                Our caramel crossbody in vegetable-tanned calf — compact, warm,
+                and made to be lived in. The piece that taught us how little a
+                bag really needs.
+              </p>
+              <a
+                href="#order"
+                className="group mt-10 inline-flex items-center gap-3 text-[0.72rem] uppercase tracking-wide-sm text-foreground"
+              >
+                <span className="transition-colors group-hover:text-copper-soft">
+                  Enquire to acquire
+                </span>
+                <span className="block h-px w-10 bg-copper transition-all duration-500 group-hover:w-16" />
+              </a>
+            </Reveal>
+          </div>
+        </section>
+
         {/* ===================== SIGNATURE — THE CHERRY ===================== */}
         <section id="signature" className="relative overflow-hidden">
           <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-0 lg:grid-cols-2">
@@ -206,6 +368,38 @@ export default function Home() {
                 className="object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-r from-[#0a0807] via-transparent to-transparent lg:from-[#0a0807]/80" />
+            </div>
+          </div>
+        </section>
+
+        {/* ===================== MATERIALS & PALETTE ===================== */}
+        <section className="border-t border-line px-6 py-28 lg:px-10 lg:py-36">
+          <div className="mx-auto max-w-7xl">
+            <Reveal className="mx-auto mb-16 max-w-2xl text-center">
+              <p className="mb-5 text-[0.7rem] uppercase tracking-luxe text-copper">
+                Materials
+              </p>
+              <h2 className="font-serif text-5xl font-light tracking-tight md:text-6xl">
+                The palette
+              </h2>
+              <p className="mx-auto mt-6 max-w-md text-sm font-light leading-loose tracking-wide-sm text-muted">
+                A tight range of natural leather tones, each chosen to deepen and
+                soften with time. No two pieces age quite alike.
+              </p>
+            </Reveal>
+
+            <div className="flex flex-wrap items-start justify-center gap-x-10 gap-y-12 sm:gap-x-16">
+              {palette.map((c, i) => (
+                <Reveal key={c.name} delay={i * 80}>
+                  <div className="group flex flex-col items-center">
+                    <span
+                      className="h-24 w-24 rounded-full ring-1 ring-inset ring-white/10 transition-transform duration-500 group-hover:scale-105 md:h-28 md:w-28"
+                      style={{ backgroundColor: c.hex }}
+                    />
+                    <span className="mt-5 font-serif text-xl">{c.name}</span>
+                  </div>
+                </Reveal>
+              ))}
             </div>
           </div>
         </section>
@@ -293,6 +487,116 @@ export default function Home() {
           </div>
         </section>
 
+        {/* ===================== WORDS / TESTIMONIALS ===================== */}
+        <section className="border-t border-line px-6 py-28 lg:px-10 lg:py-36">
+          <div className="mx-auto max-w-7xl">
+            <Reveal className="mb-16 text-center">
+              <p className="mb-5 text-[0.7rem] uppercase tracking-luxe text-copper">
+                Words
+              </p>
+              <h2 className="font-serif text-5xl font-light tracking-tight md:text-6xl">
+                From those who carry NŌR
+              </h2>
+            </Reveal>
+
+            <div className="grid grid-cols-1 gap-10 md:grid-cols-3">
+              {testimonials.map((t, i) => (
+                <Reveal key={t.name} delay={i * 110}>
+                  <figure className="flex h-full flex-col border-t border-line pt-8">
+                    <span className="font-serif text-5xl leading-none text-copper">
+                      “
+                    </span>
+                    <blockquote className="mt-2 flex-1 font-serif text-xl font-light italic leading-relaxed text-foreground md:text-2xl">
+                      {t.quote}
+                    </blockquote>
+                    <figcaption className="mt-6 text-[0.7rem] uppercase tracking-wide-sm text-muted">
+                      {t.name} — {t.place}
+                    </figcaption>
+                  </figure>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ===================== JOURNEY (INSTAGRAM) ===================== */}
+        <section id="journal" className="px-6 pb-28 lg:px-10">
+          <div className="mx-auto max-w-7xl">
+            <Reveal className="mb-12 flex flex-col items-center justify-between gap-4 sm:flex-row">
+              <div>
+                <p className="mb-4 text-[0.7rem] uppercase tracking-luxe text-copper">
+                  The Journal
+                </p>
+                <h2 className="font-serif text-4xl font-light tracking-tight md:text-6xl">
+                  Follow the journey
+                </h2>
+              </div>
+              <a
+                href="https://instagram.com/houseof.nor"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center gap-3 text-[0.72rem] uppercase tracking-wide-sm text-copper-soft"
+              >
+                <span className="transition-colors group-hover:text-foreground">
+                  @houseof.nor
+                </span>
+                <span className="block h-px w-10 bg-copper transition-all duration-500 group-hover:w-16" />
+              </a>
+            </Reveal>
+
+            <div className="grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-4">
+              {journey.map((img, i) => (
+                <Reveal key={img} delay={(i % 3) * 80}>
+                  <a
+                    href="https://instagram.com/houseof.nor"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group relative block aspect-square overflow-hidden bg-[#15110e]"
+                  >
+                    <Image
+                      src={img}
+                      alt="House of NOR on Instagram"
+                      fill
+                      sizes="(max-width: 768px) 50vw, 33vw"
+                      className="object-cover transition-transform duration-[1.4s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 flex items-center justify-center bg-[#0a0807]/0 opacity-0 transition-all duration-500 group-hover:bg-[#0a0807]/45 group-hover:opacity-100">
+                      <span className="font-serif text-2xl tracking-[0.3em] text-foreground">
+                        N<span className="text-copper">Ō</span>R
+                      </span>
+                    </div>
+                  </a>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ===================== FAQ ===================== */}
+        <section
+          id="faq"
+          className="border-t border-line px-6 py-28 lg:px-10 lg:py-36"
+        >
+          <div className="mx-auto grid max-w-7xl grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-20">
+            <Reveal className="lg:col-span-4">
+              <p className="mb-5 text-[0.7rem] uppercase tracking-luxe text-copper">
+                Enquiries
+              </p>
+              <h2 className="font-serif text-5xl font-light leading-[1.05] tracking-tight md:text-6xl">
+                Good to
+                <br />
+                know
+              </h2>
+              <p className="mt-6 max-w-xs text-sm font-light leading-loose tracking-wide-sm text-muted">
+                Anything else? We&apos;re a message away on Instagram or Eitaa.
+              </p>
+            </Reveal>
+            <Reveal delay={120} className="lg:col-span-8">
+              <Faq />
+            </Reveal>
+          </div>
+        </section>
+
         {/* ===================== ORDER / CONTACT ===================== */}
         <section id="order" className="px-6 py-32 text-center lg:py-44">
           <div className="mx-auto max-w-3xl">
@@ -349,6 +653,23 @@ export default function Home() {
           </div>
         </section>
 
+        {/* ===================== NEWSLETTER ===================== */}
+        <section className="border-t border-line bg-[#0c0a08] px-6 py-24 text-center lg:py-32">
+          <Reveal className="mx-auto max-w-xl">
+            <p className="mb-6 text-[0.7rem] uppercase tracking-luxe text-copper">
+              Stay close
+            </p>
+            <h2 className="font-serif text-4xl font-light leading-tight tracking-tight text-balance md:text-5xl">
+              Join the list
+            </h2>
+            <p className="mx-auto mt-5 max-w-sm text-sm font-light leading-loose tracking-wide-sm text-muted">
+              New pieces, in small numbers, told first to those on our list. No
+              noise — only NŌR.
+            </p>
+            <NewsletterForm />
+          </Reveal>
+        </section>
+
         {/* ===================== FOOTER ===================== */}
         <footer className="border-t border-line px-6 py-14 lg:px-10">
           <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-8 md:flex-row">
@@ -371,9 +692,11 @@ export default function Home() {
 
             <nav className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3">
               {[
+                { href: "#house", label: "House" },
                 { href: "#collection", label: "Collection" },
-                { href: "#philosophy", label: "Philosophy" },
                 { href: "#atelier", label: "Atelier" },
+                { href: "#journal", label: "Journal" },
+                { href: "#faq", label: "FAQ" },
                 { href: "#order", label: "Order" },
               ].map((l) => (
                 <a

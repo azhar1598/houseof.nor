@@ -3,10 +3,11 @@
 import { useEffect, useState } from "react";
 
 const LINKS = [
+  { href: "#house", label: "House" },
   { href: "#collection", label: "Collection" },
-  { href: "#philosophy", label: "Philosophy" },
   { href: "#signature", label: "The Cherry" },
   { href: "#atelier", label: "Atelier" },
+  { href: "#journal", label: "Journal" },
   { href: "#order", label: "Order" },
 ];
 
@@ -28,94 +29,131 @@ export default function SiteHeader() {
     };
   }, [open]);
 
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
+
   return (
-    <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-700 ${
-        scrolled
-          ? "border-b border-line bg-[#0a0807]/85 backdrop-blur-md py-4"
-          : "border-b border-transparent py-6"
-      }`}
-    >
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 lg:px-10">
-        <a
-          href="#top"
-          className="font-serif text-2xl tracking-[0.3em] text-foreground transition-colors hover:text-copper-soft"
-          aria-label="NOR home"
-        >
-          N<span className="text-copper">Ō</span>R
-        </a>
+    <>
+      <header
+        className={`fixed inset-x-0 top-0 z-50 transition-all duration-700 ${
+          scrolled
+            ? "border-b border-line bg-[#0a0807]/85 backdrop-blur-md py-4"
+            : "border-b border-transparent py-6"
+        }`}
+      >
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 lg:px-10">
+          <a
+            href="#top"
+            className="font-serif text-2xl tracking-[0.3em] text-foreground transition-colors hover:text-copper-soft"
+            aria-label="NOR home"
+          >
+            N<span className="text-copper">Ō</span>R
+          </a>
 
-        <nav className="hidden items-center gap-10 md:flex">
-          {LINKS.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="group relative text-[0.72rem] uppercase tracking-wide-sm text-muted transition-colors hover:text-foreground"
-            >
-              {link.label}
-              <span className="absolute -bottom-1.5 left-0 h-px w-0 bg-copper transition-all duration-500 group-hover:w-full" />
-            </a>
-          ))}
-        </nav>
+          <nav className="hidden items-center gap-10 md:flex">
+            {LINKS.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                className="group relative text-[0.72rem] uppercase tracking-wide-sm text-muted transition-colors hover:text-foreground"
+              >
+                {link.label}
+                <span className="absolute -bottom-1.5 left-0 h-px w-0 bg-copper transition-all duration-500 group-hover:w-full" />
+              </a>
+            ))}
+          </nav>
 
-        <a
-          href="#order"
-          className="hidden rounded-full border border-line px-6 py-2.5 text-[0.7rem] uppercase tracking-wide-sm text-copper-soft transition-all duration-500 hover:border-copper hover:bg-copper hover:text-[#0a0807] md:inline-block"
-        >
-          Enquire
-        </a>
+          <a
+            href="#order"
+            className="hidden rounded-full border border-line px-6 py-2.5 text-[0.7rem] uppercase tracking-wide-sm text-copper-soft transition-all duration-500 hover:border-copper hover:bg-copper hover:text-[#0a0807] md:inline-block"
+          >
+            Enquire
+          </a>
 
-        <button
-          type="button"
-          onClick={() => setOpen((v) => !v)}
-          aria-label="Toggle menu"
-          aria-expanded={open}
-          className="flex h-9 w-9 flex-col items-center justify-center gap-[5px] md:hidden"
-        >
-          <span
-            className={`h-px w-6 bg-foreground transition-all duration-300 ${
-              open ? "translate-y-[6px] rotate-45" : ""
-            }`}
-          />
-          <span
-            className={`h-px w-6 bg-foreground transition-all duration-300 ${
-              open ? "opacity-0" : ""
-            }`}
-          />
-          <span
-            className={`h-px w-6 bg-foreground transition-all duration-300 ${
-              open ? "-translate-y-[6px] -rotate-45" : ""
-            }`}
-          />
-        </button>
-      </div>
+          <button
+            type="button"
+            onClick={() => setOpen(true)}
+            aria-label="Open menu"
+            aria-expanded={open}
+            className="flex h-9 w-9 flex-col items-center justify-center gap-[5px] md:hidden"
+          >
+            <span className="h-px w-6 bg-foreground" />
+            <span className="h-px w-6 bg-foreground" />
+            <span className="h-px w-6 bg-foreground" />
+          </button>
+        </div>
+      </header>
 
-      {/* Mobile menu */}
+      {/* Mobile menu — full-screen, solid, scrollable overlay */}
       <div
-        className={`fixed inset-0 top-0 z-40 flex flex-col items-center justify-center gap-8 bg-[#0a0807]/97 backdrop-blur-xl transition-all duration-500 md:hidden ${
+        className={`fixed inset-0 z-[60] flex flex-col bg-[#0a0807] transition-opacity duration-500 md:hidden ${
           open
             ? "pointer-events-auto opacity-100"
             : "pointer-events-none opacity-0"
         }`}
       >
-        {LINKS.map((link) => (
+        <div className="flex shrink-0 items-center justify-between px-6 py-6">
           <a
-            key={link.href}
-            href={link.href}
+            href="#top"
             onClick={() => setOpen(false)}
-            className="font-serif text-3xl tracking-wide text-foreground transition-colors hover:text-copper-soft"
+            className="font-serif text-2xl tracking-[0.3em] text-foreground"
+            aria-label="NOR home"
           >
-            {link.label}
+            N<span className="text-copper">Ō</span>R
           </a>
-        ))}
-        <a
-          href="#order"
-          onClick={() => setOpen(false)}
-          className="mt-4 rounded-full border border-copper px-8 py-3 text-xs uppercase tracking-wide-sm text-copper-soft"
-        >
-          Enquire
-        </a>
+          <button
+            type="button"
+            onClick={() => setOpen(false)}
+            aria-label="Close menu"
+            className="relative flex h-9 w-9 items-center justify-center"
+          >
+            <span className="absolute h-px w-6 rotate-45 bg-foreground" />
+            <span className="absolute h-px w-6 -rotate-45 bg-foreground" />
+          </button>
+        </div>
+
+        <nav className="flex flex-1 flex-col items-center justify-center gap-7 overflow-y-auto px-6 py-10">
+          {LINKS.map((link, i) => (
+            <a
+              key={link.href}
+              href={link.href}
+              onClick={() => setOpen(false)}
+              style={{
+                transitionDelay: open ? `${120 + i * 55}ms` : "0ms",
+              }}
+              className={`font-serif text-3xl tracking-wide text-foreground transition-all duration-500 hover:text-copper-soft ${
+                open ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0"
+              }`}
+            >
+              {link.label}
+            </a>
+          ))}
+          <a
+            href="#order"
+            onClick={() => setOpen(false)}
+            style={{
+              transitionDelay: open ? `${120 + LINKS.length * 55}ms` : "0ms",
+            }}
+            className={`mt-4 rounded-full border border-copper px-9 py-3.5 text-xs uppercase tracking-wide-sm text-copper-soft transition-all duration-500 ${
+              open ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0"
+            }`}
+          >
+            Enquire
+          </a>
+          <p
+            className="mt-6 text-[0.7rem] uppercase tracking-luxe text-copper"
+            dir="rtl"
+            lang="ar"
+          >
+            بسم الله النور
+          </p>
+        </nav>
       </div>
-    </header>
+    </>
   );
 }
