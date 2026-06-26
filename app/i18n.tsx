@@ -60,6 +60,12 @@ const en = {
     body: "Every NŌR piece begins with subtraction — paring away the superfluous until only the necessary, and the beautiful, is left. Honest leather. Quiet hardware. Forms that age into something more personal with every wear.",
   },
   motto: "less > more",
+  manifesto: {
+    lineA: "She doesn't follow trends.",
+    lineB: "She creates her own rhythm.",
+    body: "Every detail she chooses — every piece she wears — tells a story only a powerful woman can carry.",
+    closing: "For the woman who thinks differently.",
+  },
   collection: {
     eyebrow: "The Collection",
     title: "Objects of restraint",
@@ -242,6 +248,12 @@ const fa: Dict = {
     body: "هر قطعهٔ نور با کاستن آغاز می‌شود؛ پیراستنِ زوائد تا جایی که تنها امرِ ضروری و زیبا باقی بماند. چرمِ صادق. یراقِ آرام. فرم‌هایی که با هر بار استفاده شخصی‌تر می‌شوند.",
   },
   motto: "کمتر، بیشتر",
+  manifesto: {
+    lineA: "او از مدها پیروی نمی‌کند.",
+    lineB: "او ریتمِ خود را می‌سازد.",
+    body: "هر جزئی که برمی‌گزیند — هر قطعه‌ای که می‌پوشد — داستانی را روایت می‌کند که تنها یک زنِ قدرتمند می‌تواند با خود حمل کند.",
+    closing: "برای زنی که متفاوت می‌اندیشد.",
+  },
   collection: {
     eyebrow: "مجموعه",
     title: "اشیائی از جنسِ خویشتن‌داری",

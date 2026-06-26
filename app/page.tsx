@@ -353,6 +353,38 @@ export default function Home() {
           </div>
         </section>
 
+        {/* ===================== MANIFESTO ===================== */}
+        <section
+          id="manifesto"
+          className="relative overflow-hidden border-t border-line px-6 py-32 text-center md:py-44"
+        >
+          <div className="mx-auto max-w-3xl">
+            <Reveal>
+              <p className="font-serif text-4xl font-light leading-[1.12] tracking-tight text-balance md:text-6xl">
+                {t.manifesto.lineA}
+              </p>
+            </Reveal>
+            <Reveal delay={120}>
+              <p className="mt-2 font-serif text-4xl font-light leading-[1.12] tracking-tight text-balance text-copper-soft md:text-6xl">
+                {t.manifesto.lineB}
+              </p>
+            </Reveal>
+            <Reveal delay={240}>
+              <p className="mx-auto mt-10 max-w-xl text-sm font-light leading-loose tracking-wide-sm text-muted md:text-base">
+                {t.manifesto.body}
+              </p>
+            </Reveal>
+            <Reveal delay={360}>
+              <div className="mt-12 flex flex-col items-center gap-5">
+                <span className="h-px w-12 bg-copper" />
+                <p className="font-serif text-2xl italic text-foreground md:text-3xl">
+                  {t.manifesto.closing}
+                </p>
+              </div>
+            </Reveal>
+          </div>
+        </section>
+
         {/* ===================== LOOKBOOK ===================== */}
         <section className="px-6 py-28 lg:px-10">
           <div className="mx-auto max-w-7xl">
