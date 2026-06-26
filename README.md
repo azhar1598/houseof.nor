@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# NŌR — نور
 
-## Getting Started
+A quiet-luxury brand site for **NŌR** (House of Nor), a maker of handcrafted
+leather handbags. Built around a single idea: **less &gt; more**.
 
-First, run the development server:
+Instagram: [@houseof.nor](https://instagram.com/houseof.nor)
+
+## Stack
+
+- [Next.js 16](https://nextjs.org) (App Router, Turbopack)
+- React 19
+- Tailwind CSS v4
+- Fonts: Cormorant Garamond (display) + Jost (text) via `next/font`
+
+## Getting started
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+app/
+  layout.tsx          # Root layout, fonts, metadata
+  page.tsx            # The full single-page site
+  globals.css         # Theme tokens, scroll-reveal, grain texture
+  icon.svg            # NŌR cherry favicon
+  components/
+    SiteHeader.tsx    # Sticky nav + mobile menu (client)
+    Reveal.tsx        # Intersection-observer scroll reveal (client)
+public/images/        # Product & editorial photography
+```
 
-## Learn More
+## Design notes
 
-To learn more about Next.js, take a look at the following resources:
+- **Palette:** near-black (`#0a0807`) with copper / rose-gold accents and warm cream text.
+- **Sections:** Hero · Philosophy · Collection · The Cherry (signature) · Lookbook · Atelier · Order.
+- The cherry charm is the brand's signature detail — the one thing never subtracted.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Editing content
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Products:** edit the `collection` array in `app/page.tsx`.
+- **Photos:** drop images into `public/images/` and update the paths.
+- **Contact:** Instagram, Eitaa, and phone links live in the `#order` section of `app/page.tsx`.
