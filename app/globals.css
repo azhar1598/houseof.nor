@@ -55,6 +55,15 @@ body {
   background: rgba(192, 138, 94, 0.6);
 }
 
+/* Hidden scrollbar for carousels / horizontal scroll tracks */
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
 @layer utilities {
   .font-serif {
     font-family: var(--font-serif), Georgia, serif;

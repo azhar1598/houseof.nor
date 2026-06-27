@@ -5,29 +5,36 @@ import SiteHeader from "./components/SiteHeader";
 import Reveal from "./components/Reveal";
 import Faq from "./components/Faq";
 import NewsletterForm from "./components/NewsletterForm";
+import CollectionCarousel from "./components/CollectionCarousel";
 import { useI18n } from "./i18n";
 
 const collectionImages = [
   "/images/bag-tan-triangle.png",
   "/images/bag-black-cherry.png",
+  "/images/bag-red-tophandle.png",
+  "/images/bag-black-tophandle.png",
   "/images/bag-black-tote.png",
   "/images/look-red-mini.png",
+  "/images/bag-bowler-raffia.png",
+  "/images/bag-signature-brown.png",
+  "/images/bag-coin-purse.png",
+  "/images/bag-nylon-charm.png",
 ];
 
 const lookbookImages = [
-  "/images/look-yellow-crossbody.png",
-  "/images/look-black-crossbody.png",
+  "/images/look-snakeskin-street.png",
+  "/images/look-red-chain.png",
 ];
 
 const paletteHex = ["#c08a5e", "#8a5a36", "#d9a441", "#9d2b2b", "#1a1614"];
 
 const journey = [
-  "/images/hero-tan.png",
-  "/images/bag-tan-triangle.png",
-  "/images/look-yellow-crossbody.png",
-  "/images/bag-black-cherry.png",
-  "/images/look-black-crossbody.png",
-  "/images/look-red-mini.png",
+  "/images/journey-shrine.png",
+  "/images/look-grey-tophandle.png",
+  "/images/bag-snakeskin-flap.png",
+  "/images/journey-faith.png",
+  "/images/look-snakeskin-street.png",
+  "/images/look-red-chain.png",
 ];
 
 function Wordmark({ className = "" }: { className?: string }) {
@@ -208,40 +215,13 @@ export default function Home() {
               </p>
             </Reveal>
 
-            <div className="grid grid-cols-1 gap-x-8 gap-y-16 sm:grid-cols-2 lg:grid-cols-4">
-              {t.collection.items.map((item, i) => (
-                <Reveal key={collectionImages[i]} delay={i * 90}>
-                  <article className="group cursor-pointer">
-                    <div className="relative aspect-[4/5] overflow-hidden bg-[#15110e]">
-                      <Image
-                        src={collectionImages[i]}
-                        alt={`${item.name} — ${item.color}`}
-                        fill
-                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                        className="object-cover transition-transform duration-[1.4s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#0a0807]/40 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-                      <span className="absolute bottom-4 start-4 translate-y-3 text-[0.65rem] uppercase tracking-wide-sm text-foreground opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
-                        {t.collection.viewPiece}
-                      </span>
-                    </div>
-                    <div className="mt-5 flex items-start justify-between gap-4">
-                      <div>
-                        <h3 className="font-serif text-2xl font-normal leading-tight">
-                          {item.name}
-                        </h3>
-                        <p className="mt-1 text-xs font-light tracking-wide-sm text-muted">
-                          {item.tagline}
-                        </p>
-                      </div>
-                      <span className="mt-1 whitespace-nowrap text-[0.65rem] uppercase tracking-wide-sm text-copper-soft">
-                        {item.color}
-                      </span>
-                    </div>
-                  </article>
-                </Reveal>
-              ))}
-            </div>
+            <Reveal>
+              <CollectionCarousel
+                items={t.collection.items}
+                images={collectionImages}
+                viewLabel={t.collection.viewPiece}
+              />
+            </Reveal>
           </div>
         </section>
 
@@ -284,7 +264,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ===================== SIGNATURE — THE CHERRY ===================== */}
+        {/* ===================== SIGNATURE — A SIGNATURE OF YOUR OWN ===================== */}
         <section id="signature" className="relative overflow-hidden">
           <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-0 lg:grid-cols-2">
             <Reveal className="order-2 px-6 py-24 lg:order-1 lg:px-16 lg:py-40">
@@ -312,7 +292,7 @@ export default function Home() {
             <div className="relative order-1 h-[60vh] w-full lg:order-2 lg:h-[88vh]">
               <Image
                 src="/images/bag-black-cherry.png"
-                alt="A black NOR mini bag with the signature cherry charm"
+                alt="A black NOR mini bag carried by hand"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover"
@@ -467,7 +447,7 @@ export default function Home() {
 
             <div className="grid grid-cols-1 gap-10 md:grid-cols-3">
               {t.words.items.map((item, i) => (
-                <Reveal key={item.name} delay={i * 110}>
+                <Reveal key={item.quote} delay={i * 110}>
                   <figure className="flex h-full flex-col border-t border-line pt-8">
                     <span className="font-serif text-5xl leading-none text-copper">
                       “
@@ -476,7 +456,7 @@ export default function Home() {
                       {item.quote}
                     </blockquote>
                     <figcaption className="mt-6 text-[0.7rem] uppercase tracking-wide-sm text-muted">
-                      {item.name} — {item.place}
+                      {item.by}
                     </figcaption>
                   </figure>
                 </Reveal>

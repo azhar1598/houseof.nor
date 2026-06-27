@@ -11,7 +11,7 @@ export default function SiteHeader() {
   const links = [
     { href: "#house", label: t.nav.house },
     { href: "#collection", label: t.nav.collection },
-    { href: "#signature", label: t.nav.cherry },
+    { href: "#signature", label: t.nav.signature },
     { href: "#atelier", label: t.nav.atelier },
     { href: "#journal", label: t.nav.journal },
     { href: "#order", label: t.nav.order },

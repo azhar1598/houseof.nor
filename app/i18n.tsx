@@ -18,7 +18,7 @@ const en = {
   nav: {
     house: "House",
     collection: "Collection",
-    cherry: "The Cherry",
+    signature: "Signature",
     atelier: "Atelier",
     journal: "Journal",
     order: "Order",
@@ -36,9 +36,10 @@ const en = {
   marquee: [
     "Made to order",
     "Handcrafted leather",
-    "Limited editions",
+    "Created with value",
     "less > more",
-    "The cherry, always",
+    "In its right moment",
+    "A signature of your own",
     "Quiet luxury",
   ],
   house: {
@@ -46,18 +47,18 @@ const en = {
     titleTop: "House of",
     light: "نور — light",
     lead: "NŌR means light. We named the house for the way good leather catches it — and for the clarity of a wardrobe pared back to what you truly love.",
-    body: "House of NŌR began as a small atelier with an obsession for proportion and patina. We make few things, slowly, for people who would rather own one considered piece than many forgettable ones. Every bag carries our signature cherry — a small joy, tied by hand.",
+    body: "House of NŌR began as a small atelier with an obsession for proportion and patina. The story behind every bag is a feeling — and a value we want to give to you. We bring together modern, distinctive design, the finest genuine leather, and careful hand-stitching. We make few things, slowly, for people who would rather own one considered piece than many forgettable ones.",
     stats: [
       { n: "100%", l: "Handcrafted" },
       { n: "Made", l: "To order" },
-      { n: "1", l: "Cherry, always" },
+      { n: "1", l: "Of its kind" },
     ],
   },
   philosophy: {
     eyebrow: "The Philosophy",
     statement:
       "We believe that what you leave out matters as much as what remains.",
-    body: "Every NŌR piece begins with subtraction — paring away the superfluous until only the necessary, and the beautiful, is left. Honest leather. Quiet hardware. Forms that age into something more personal with every wear.",
+    body: "Every NŌR piece begins with subtraction — paring away the superfluous until only the necessary, and the beautiful, is left. Our belief has never changed: to create value, and to leave a signature on the way you carry yourself. Honest leather. Quiet hardware. Forms that age into something more personal with every wear — pieces made to be lived with, meaningfully.",
   },
   motto: "less > more",
   manifesto: {
@@ -72,10 +73,28 @@ const en = {
     note: "A small, considered edit. Made in limited numbers, by hand.",
     viewPiece: "View piece →",
     items: [
-      { name: "The Triangle", tagline: "Vegetable-tanned calf", color: "Caramel" },
-      { name: "Le Petit Cherry", tagline: "Mini top-handle", color: "Onyx" },
-      { name: "The Mini Tote", tagline: "Structured micro tote", color: "Onyx" },
+      {
+        name: "The Triangle",
+        tagline: "Vegetable-tanned calf",
+        color: "Caramel",
+      },
+      { name: "Le Petit NŌR", tagline: "Mini top-handle", color: "Onyx" },
+      { name: "Le Petit Rouge", tagline: "Hand-held mini", color: "Bordeaux" },
+      {
+        name: "The Top Handle",
+        tagline: "Structured top-handle",
+        color: "Onyx",
+      },
+      {
+        name: "The Mini Tote",
+        tagline: "Structured micro tote",
+        color: "Onyx",
+      },
       { name: "The Pocket", tagline: "Micro crossbody", color: "Cerise" },
+      { name: "The Bowler", tagline: "Raffia & calf", color: "Natural" },
+      { name: "The Monogram", tagline: "Coated canvas", color: "Chestnut" },
+      { name: "The Coin Purse", tagline: "Zip pouch", color: "Onyx" },
+      { name: "The Featherweight", tagline: "Nylon mini tote", color: "Black" },
     ],
   },
   featured: {
@@ -86,10 +105,10 @@ const en = {
   },
   signature: {
     eyebrow: "The Signature",
-    titleA: "A single cherry,",
-    titleB: "always.",
-    body: "Where a house signs its name, we tie a small cherry charm — a quiet wink, a reminder that luxury can be playful. It is the one detail we never subtract. Look for it on every piece.",
-    mark: "the mark of NŌR",
+    titleA: "A signature",
+    titleB: "of your own.",
+    body: "My belief in choosing these forms has always been the same — to create value, and to leave a signature on the way you carry yourself. The story behind every bag is a feeling, and a value I want to give to you.",
+    mark: "live with value",
   },
   materials: {
     eyebrow: "Materials",
@@ -100,7 +119,7 @@ const en = {
   lookbook: {
     eyebrow: "Worn",
     title: "In the everyday",
-    labels: ["Amber on Noir", "Shadow Play"],
+    labels: ["NŌR, in motion", "A note of cerise"],
   },
   atelier: {
     eyebrow: "The Atelier",
@@ -127,25 +146,22 @@ const en = {
   },
   words: {
     eyebrow: "Words",
-    title: "From those who carry NŌR",
+    title: "Words we live by",
     items: [
       {
         quote:
-          "It is the only bag I reach for now. Quiet, but everyone notices it.",
-        name: "Maryam",
-        place: "Tehran",
+          "My belief has always been to create value — and to leave a signature on your style.",
+        by: "Our belief",
       },
       {
         quote:
-          "The leather has aged beautifully. It feels more mine with every month.",
-        name: "Sara",
-        place: "Isfahan",
+          "The story behind every bag is a feeling — and a value I want to give to you.",
+        by: "The story",
       },
       {
         quote:
-          "Understated luxury, done properly. The little cherry makes me smile daily.",
-        name: "Leila",
-        place: "Mashhad",
+          "Everything happens at the right moment. Sometimes you simply wait, and trust in God's timing.",
+        by: "On timing",
       },
     ],
   },
@@ -207,7 +223,7 @@ const fa: Dict = {
   nav: {
     house: "خانه",
     collection: "مجموعه",
-    cherry: "گیلاس",
+    signature: "امضا",
     atelier: "آتلیه",
     journal: "ژورنال",
     order: "سفارش",
@@ -225,9 +241,10 @@ const fa: Dict = {
   marquee: [
     "ساخت سفارشی",
     "چرم دست‌دوز",
-    "نسخهٔ محدود",
+    "ساخته‌شده با ارزش",
     "کمتر، بیشتر",
-    "همیشه، یک گیلاس",
+    "در زمانِ درست",
+    "امضایی از آنِ خودت",
     "لوکسِ آرام",
   ],
   house: {
@@ -235,17 +252,18 @@ const fa: Dict = {
     titleTop: "خانهٔ",
     light: "نور — روشنایی",
     lead: "نور یعنی روشنایی. این خانه را به‌نامِ شیوه‌ای نامیدیم که چرمِ خوب نور را در خود می‌گیرد؛ و به‌نامِ صفای کمدی که تنها به آنچه به‌راستی دوستش داری خلاصه شده است.",
-    body: "خانهٔ نور به‌عنوان آتلیه‌ای کوچک آغاز شد؛ با وسواسی برای تناسب و کهنگیِ اصیلِ چرم. ما چیزهای کمی می‌سازیم، به‌آهستگی، برای کسانی که یک قطعهٔ سنجیده را به چندین قطعهٔ فراموش‌شدنی ترجیح می‌دهند. هر کیف نشانِ گیلاسِ ما را با خود دارد — شادیِ کوچکی که با دست گره خورده است.",
+    body: "خانهٔ نور به‌عنوان آتلیه‌ای کوچک آغاز شد؛ با وسواسی برای تناسب و کهنگیِ اصیلِ چرم. پشتِ هر کیف، حسی نهفته است — و ارزشی که می‌خواهیم به تو بدهیم. ما طراحیِ مدرن و متمایز را با بهترین چرمِ طبیعی و دوختِ دستیِ دقیق در هم می‌آمیزیم. چیزهای کمی می‌سازیم، به‌آهستگی، برای کسانی که یک قطعهٔ سنجیده را به چندین قطعهٔ فراموش‌شدنی ترجیح می‌دهند.",
     stats: [
       { n: "۱۰۰٪", l: "دست‌دوز" },
       { n: "ساخت", l: "سفارشی" },
-      { n: "۱", l: "همیشه یک گیلاس" },
+      { n: "۱", l: "یگانه" },
     ],
   },
   philosophy: {
     eyebrow: "فلسفه",
-    statement: "ما باور داریم آنچه حذف می‌کنی، به‌اندازهٔ آنچه می‌مانَد اهمیت دارد.",
-    body: "هر قطعهٔ نور با کاستن آغاز می‌شود؛ پیراستنِ زوائد تا جایی که تنها امرِ ضروری و زیبا باقی بماند. چرمِ صادق. یراقِ آرام. فرم‌هایی که با هر بار استفاده شخصی‌تر می‌شوند.",
+    statement:
+      "ما باور داریم آنچه حذف می‌کنی، به‌اندازهٔ آنچه می‌مانَد اهمیت دارد.",
+    body: "هر قطعهٔ نور با کاستن آغاز می‌شود؛ پیراستنِ زوائد تا جایی که تنها امرِ ضروری و زیبا باقی بماند. باورِ ما هرگز تغییر نکرده: آفریدنِ ارزش، و گذاشتنِ امضایی بر شیوه‌ای که خود را با آن حمل می‌کنی. چرمِ صادق. یراقِ آرام. فرم‌هایی که با هر بار استفاده شخصی‌تر می‌شوند — قطعاتی برای زیستن، با ارزش.",
   },
   motto: "کمتر، بیشتر",
   manifesto: {
@@ -261,9 +279,15 @@ const fa: Dict = {
     viewPiece: "→ مشاهدهٔ قطعه",
     items: [
       { name: "مثلث", tagline: "چرمِ گیاهی‌دباغی", color: "کاراملی" },
-      { name: "گیلاسِ کوچک", tagline: "دسته‌کوتاهِ مینی", color: "مشکی" },
+      { name: "نوآرِ کوچک", tagline: "دسته‌کوتاهِ مینی", color: "مشکی" },
+      { name: "سرخِ کوچک", tagline: "مینیِ دستی", color: "زرشکی" },
+      { name: "دسته‌بالا", tagline: "دسته‌کوتاهِ ساختاردار", color: "مشکی" },
       { name: "توتِ مینی", tagline: "توتِ کوچکِ ساختار‌دار", color: "مشکی" },
       { name: "جیبی", tagline: "دوشیِ میکرو", color: "گیلاسی" },
+      { name: "بولر", tagline: "حصیر و چرمِ گوساله", color: "طبیعی" },
+      { name: "مونوگرام", tagline: "کنفِ روکش‌دار", color: "بلوطی" },
+      { name: "کیفِ سکه", tagline: "پوچِ زیپ‌دار", color: "مشکی" },
+      { name: "پَرسبک", tagline: "توتِ مینیِ نایلونی", color: "مشکی" },
     ],
   },
   featured: {
@@ -273,11 +297,11 @@ const fa: Dict = {
     body: "دوشیِ کاراملیِ ما از چرمِ گیاهی‌دباغی — جمع‌وجور، گرم و ساخته‌شده برای زندگیِ روزمره. قطعه‌ای که به ما آموخت یک کیف چه اندک چیزی نیاز دارد.",
   },
   signature: {
-    eyebrow: "نشانه",
-    titleA: "یک گیلاس،",
-    titleB: "همیشه.",
-    body: "آن‌جا که یک خانه نامش را امضا می‌کند، ما یک آویزِ کوچکِ گیلاس گره می‌زنیم — چشمکی آرام، یادآوری اینکه لوکس می‌تواند بازیگوش هم باشد. این تنها جزئی است که هرگز حذفش نمی‌کنیم. روی هر قطعه دنبالش بگرد.",
-    mark: "نشانِ نور",
+    eyebrow: "امضا",
+    titleA: "امضایی",
+    titleB: "از آنِ خودت.",
+    body: "باورم در انتخابِ این فرم‌ها همیشه یکی بوده — آفریدنِ ارزش، و گذاشتنِ امضایی بر شیوه‌ای که خود را با آن حمل می‌کنی. داستانِ پشتِ هر کیف، همان حس و ارزشی است که می‌خواهم به تو بدهم.",
+    mark: "با ارزش زندگی کن",
   },
   materials: {
     eyebrow: "متریال",
@@ -288,7 +312,7 @@ const fa: Dict = {
   lookbook: {
     eyebrow: "بر تن",
     title: "در روزمرگی",
-    labels: ["کهربا بر سیاه", "بازیِ سایه"],
+    labels: ["نور، در حرکت", "نتی از گیلاسی"],
   },
   atelier: {
     eyebrow: "آتلیه",
@@ -315,22 +339,21 @@ const fa: Dict = {
   },
   words: {
     eyebrow: "سخن‌ها",
-    title: "از زبانِ کسانی که نور را همراه دارند",
+    title: "سخنانی که با آن‌ها زندگی می‌کنیم",
     items: [
       {
-        quote: "حالا تنها کیفی است که سراغش می‌روم. آرام، اما همه می‌بینندش.",
-        name: "مریم",
-        place: "تهران",
+        quote:
+          "باورم همیشه این بوده که ارزش بیافرینم — و امضایی بر سبکِ تو بگذارم.",
+        by: "باورِ ما",
       },
       {
-        quote: "چرمش به‌زیبایی کهنه شده. هر ماه بیشتر مالِ من می‌شود.",
-        name: "سارا",
-        place: "اصفهان",
+        quote: "پشتِ هر کیف حسی نهفته است — و ارزشی که می‌خواهم به تو بدهم.",
+        by: "داستان",
       },
       {
-        quote: "لوکسِ بی‌ادعا، به‌درستی. آن گیلاسِ کوچک هر روز لبخند به لبم می‌آورد.",
-        name: "لیلا",
-        place: "مشهد",
+        quote:
+          "هر چیز در زمانِ درستش رخ می‌دهد. گاهی فقط باید صبر کنی و به زمان‌بندیِ خدا اعتماد کنی.",
+        by: "دربارهٔ زمان",
       },
     ],
   },
