@@ -48,13 +48,21 @@ export default function CollectionCarousel({ items, images, viewLabel }: Props) 
     };
   }, [updateEdges]);
 
-  const scrollByDir = useCallback((dir: 1 | -1) => {
-    const el = trackRef.current;
-    if (!el) return;
-    const rtl = getComputedStyle(el).direction === "rtl";
-    const amount = el.clientWidth * 0.85 * dir * (rtl ? -1 : 1);
-    el.scrollBy({ left: amount, behavior: "smooth" });
+  const cardStep = useCallback((el: HTMLDivElement) => {
+    const first = el.firstElementChild as HTMLElement | null;
+    const gap = Number.parseFloat(getComputedStyle(el).columnGap || "24") || 24;
+    return first ? first.clientWidth + gap : el.clientWidth;
   }, []);
+
+  const scrollByDir = useCallback(
+    (dir: 1 | -1) => {
+      const el = trackRef.current;
+      if (!el) return;
+      const rtl = getComputedStyle(el).direction === "rtl";
+      el.scrollBy({ left: cardStep(el) * dir * (rtl ? -1 : 1), behavior: "smooth" });
+    },
+    [cardStep],
+  );
 
   const advance = useCallback(() => {
     const el = trackRef.current;
@@ -65,11 +73,8 @@ export default function CollectionCarousel({ items, images, viewLabel }: Props) 
       el.scrollTo({ left: 0, behavior: "smooth" });
       return;
     }
-    const first = el.firstElementChild as HTMLElement | null;
-    const gap = parseFloat(getComputedStyle(el).columnGap || "24") || 24;
-    const step = first ? first.clientWidth + gap : el.clientWidth * 0.85;
-    el.scrollBy({ left: step * (rtl ? -1 : 1), behavior: "smooth" });
-  }, []);
+    el.scrollBy({ left: cardStep(el) * (rtl ? -1 : 1), behavior: "smooth" });
+  }, [cardStep]);
 
   useEffect(() => {
     if (paused) return;
